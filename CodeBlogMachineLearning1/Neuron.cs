@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace CodeBlogMachineLearning1
 {
+
     internal class Neuron
     {
         public List<double> Weights { get; }
