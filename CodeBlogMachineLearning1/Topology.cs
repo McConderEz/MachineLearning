@@ -13,7 +13,7 @@ namespace CodeBlogMachineLearning1
         public List<int> HiddenLayers { get; }
         public Topology(int inputCount,int outputCount, params int[] layers)
         {
-            if (InputCount == 0 || OutputCount == 0)
+            if (inputCount == 0 || outputCount == 0)
                 throw new ArgumentNullException("Количество входныъ/выходных нейронов не может быть 0!");
             InputCount = inputCount;
             OutputCount = outputCount;

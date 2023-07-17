@@ -13,20 +13,20 @@ namespace CodeBlogMachineLearning1
 
         public Layer(List<Neuron> neurons, NeuronType type = NeuronType.Normal)
         {
-            if(Count == 0)
+            
+            Neurons = neurons;
+            if (Count == 0)
             {
                 throw new ArgumentNullException("Список нейронов не может быть пустым!");
             }
 
-            for(var i = 0;i < Neurons?.Count; i++)
+            for (var i = 0; i < Neurons?.Count; i++)
             {
                 if (neurons[i].NeuronType != type)
                 {
                     throw new ArgumentException("Список содержит нейрон несоответствующего типа!");
                 }
             }
-
-            Neurons = neurons;
         }
 
         public List<double> GetSignals()
