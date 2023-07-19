@@ -78,7 +78,7 @@ namespace CodeBlogMachineLearning1
         private double SigmoidDx(double x)
         {
             var sigmoid = Sigmoid(x);
-            var result = sigmoid / (1 - sigmoid);
+            var result = sigmoid * (1 - sigmoid);
             return result;
         }
 
