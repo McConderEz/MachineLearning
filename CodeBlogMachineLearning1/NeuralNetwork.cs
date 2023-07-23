@@ -24,7 +24,7 @@ namespace CodeBlogMachineLearning1
         }
 
 
-        public Neuron FeedForward(params double[] inputSignals)
+        public Neuron Predict(params double[] inputSignals)
         {
             
             //var signals = Normalization(inputSignals);
@@ -44,7 +44,7 @@ namespace CodeBlogMachineLearning1
         public double Learn(double[] expected, double[,] inputs, int epoch)
         {
 
-            var signals = Normalization(inputs);
+            //var signals = Normalization(inputs);
 
             var error = 0.0;
             for (int i = 0; i < epoch; i++)
@@ -54,7 +54,7 @@ namespace CodeBlogMachineLearning1
                 {
 
                     var output = expected[j];
-                    var input = GetRow(signals, j);
+                    var input = GetRow(inputs, j);
                     error += Backpropagation(output, input);
 
                 }
@@ -75,7 +75,7 @@ namespace CodeBlogMachineLearning1
 
         private double Backpropagation(double expected, params double[] inputs)
         {
-            var actual = FeedForward(inputs).Output;
+            var actual = Predict(inputs).Output;
 
             var difference = actual - expected;
 

@@ -53,7 +53,7 @@ namespace CodeBlogMachineLearning1.Tests
             for (int i = 0; i < outputs.Length; i++)
             {
                 var row = NeuralNetwork.GetRow(inputs, i);
-                var res = neuralNetwork.FeedForward(row).Output;
+                var res = neuralNetwork.Predict(row).Output;
                 results.Add(res);
             }
             for (int i = 0; i < results.Count; i++)
@@ -101,7 +101,7 @@ namespace CodeBlogMachineLearning1.Tests
             var results = new List<double>();
             for (int i = 0; i < outputs.Count; i++)
             {                
-                var res = neuralNetwork.FeedForward(inputs[i]).Output;
+                var res = neuralNetwork.Predict(inputs[i]).Output;
                 results.Add(res);
             }
             for (int i = 0; i < results.Count; i++)
@@ -110,6 +110,47 @@ namespace CodeBlogMachineLearning1.Tests
                 var actual = Math.Round(results[i], 2);
                 Assert.AreEqual(expected, actual);
             }
+        }
+
+        [TestMethod()]
+        public void RecognizeImage()
+        {
+            var size = 200;
+            var parasitizedPath = @"D:\Parasitized\";
+            var unparasitizedPath = @"D:\Uninfected\";
+
+            var converter = new PictureConverter();
+            var testparasitizedImageInput = converter.Convert(@"C:\Users\rusta\source\repos\CodeBlogMachineLearning1\CodeBlogMachineLearning1Tests\Images\parasitized.png");
+            var testunparasitizedImageInput = converter.Convert(@"C:\Users\rusta\source\repos\CodeBlogMachineLearning1\CodeBlogMachineLearning1Tests\Images\uninfected.png");
+
+            var topology = new Topology(testparasitizedImageInput.Count, 1, 0.1, testparasitizedImageInput.Count / 2);
+            var neuralNetwork = new NeuralNetwork(topology);
+            double[,] parasitizedInputs = GetData(parasitizedPath, converter, testparasitizedImageInput,size);
+            neuralNetwork.Learn(new double[] { 1 }, parasitizedInputs, 1);
+
+            double[,] unparasitizedInputs = GetData(unparasitizedPath, converter, testunparasitizedImageInput, size);
+            neuralNetwork.Learn(new double[] { 0 }, unparasitizedInputs, 1);
+
+            var par = neuralNetwork.Predict(testparasitizedImageInput.Select(t => (double)t).ToArray());
+            var unpar = neuralNetwork.Predict(testunparasitizedImageInput.Select(t => (double)t).ToArray());
+            Assert.AreEqual(1, Math.Round(par.Output, 2));
+            Assert.AreEqual(0, Math.Round(unpar.Output, 2));
+        }
+
+        private static double[,] GetData(string parasitizedPath, PictureConverter converter, List<int> testImageInput,int size)
+        {
+            var images = Directory.GetFiles(parasitizedPath);
+            var result = new double[size,testImageInput.Count];
+            for (int i = 0; i < size; i++)
+            {
+                var image = converter.Convert(images[i]);
+                for (int j = 0; j < image.Count; j++)
+                {
+                    result[i,j] = image[j];
+                }
+            }
+
+            return result;
         }
     }
 }

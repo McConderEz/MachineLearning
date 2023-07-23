@@ -16,7 +16,7 @@ namespace CodeBlogMachineLearning1.Tests
         {
             var converter = new PictureConverter();
             var inputs = converter.Convert(@"C:\Users\rusta\source\repos\CodeBlogMachineLearning1\CodeBlogMachineLearning1Tests\Images\parasitized.png");
-            converter.Save("D:\\image.png", inputs);
+            converter.Save(@"D:\image.png", inputs);
         }
     }
 }
