@@ -26,8 +26,8 @@ namespace CodeBlogMachineLearning1
 
         public Neuron FeedForward(params double[] inputSignals)
         {
-            //if (inputSignals.Length != Topology.InputCount)
-            //    throw new ArgumentException("Количество сигналов должно соответствовать количеству входных нейронов!");
+            
+            //var signals = Normalization(inputSignals);
             SendSignalsToInputNeurons(inputSignals);
             FeedForwardAllLayersAfterInput();
 
@@ -43,6 +43,9 @@ namespace CodeBlogMachineLearning1
 
         public double Learn(double[] expected, double[,] inputs, int epoch)
         {
+
+            var signals = Normalization(inputs);
+
             var error = 0.0;
             for (int i = 0; i < epoch; i++)
             {
@@ -51,7 +54,7 @@ namespace CodeBlogMachineLearning1
                 {
 
                     var output = expected[j];
-                    var input = GetRow(inputs, j);
+                    var input = GetRow(signals, j);
                     error += Backpropagation(output, input);
 
                 }

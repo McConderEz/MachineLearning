@@ -21,4 +21,10 @@
     <ProjectReference Include="..\CodeBlogMachineLearning1\CodeBlogMachineLearning1.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="heart_cleveland_upload.csv">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>
