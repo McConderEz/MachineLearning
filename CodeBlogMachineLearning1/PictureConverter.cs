@@ -12,9 +12,9 @@ namespace CodeBlogMachineLearning1
         public int Boundary { get; set; } = 128;
         public int Width { get; set; }
         public int Height { get; set; }
-        public List<int> Convert(string path)
+        public double[] Convert(string path)
         {
-            var result = new List<int>();
+            var result = new List<double>();
 
             Bitmap image = new Bitmap(path);
             var resizeImage = new Bitmap(image, new Size(20,20));
@@ -30,7 +30,7 @@ namespace CodeBlogMachineLearning1
                 }
             }
             
-            return result;
+            return result.ToArray();
         }
 
         private int Brightness(Color pixel)
@@ -39,7 +39,7 @@ namespace CodeBlogMachineLearning1
             return result <= Boundary ? 0 : 1;
         }
 
-        public void Save(string path,List<int> pixels)
+        public void Save(string path,double[] pixels)
         {
             var image = new Bitmap(Width, Height);
             for (int y = 0; y < image.Height; y++)

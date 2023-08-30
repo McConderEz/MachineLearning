@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.33906.173
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeBlogMachineLearning1", "CodeBlogMachineLearning1\CodeBlogMachineLearning1.csproj", "{B8997A87-B791-4C6F-869A-7B8C8EBDF8F1}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeBlogMachineLearning1", "CodeBlogMachineLearning1\CodeBlogMachineLearning1.csproj", "{B8997A87-B791-4C6F-869A-7B8C8EBDF8F1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodeBlogMachineLearning1Tests", "CodeBlogMachineLearning1Tests\CodeBlogMachineLearning1Tests.csproj", "{C98F4FC6-AD0D-47DC-928F-A7E6F9955769}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CodeBlogMachineLearning1Tests", "CodeBlogMachineLearning1Tests\CodeBlogMachineLearning1Tests.csproj", "{C98F4FC6-AD0D-47DC-928F-A7E6F9955769}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MedicalSystem", "MedicalSystem\MedicalSystem.csproj", "{90ABDB46-3287-449B-AEA0-F6D07D0879AD}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "pictures", "pictures", "{B2B7D70C-1C4C-40A8-9441-77DAD81B557B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,10 @@ Global
 		{C98F4FC6-AD0D-47DC-928F-A7E6F9955769}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C98F4FC6-AD0D-47DC-928F-A7E6F9955769}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C98F4FC6-AD0D-47DC-928F-A7E6F9955769}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90ABDB46-3287-449B-AEA0-F6D07D0879AD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90ABDB46-3287-449B-AEA0-F6D07D0879AD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90ABDB46-3287-449B-AEA0-F6D07D0879AD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90ABDB46-3287-449B-AEA0-F6D07D0879AD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

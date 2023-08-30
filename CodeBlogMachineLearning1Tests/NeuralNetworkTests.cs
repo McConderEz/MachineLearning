@@ -123,7 +123,7 @@ namespace CodeBlogMachineLearning1.Tests
             var testparasitizedImageInput = converter.Convert(@"C:\Users\rusta\source\repos\CodeBlogMachineLearning1\CodeBlogMachineLearning1Tests\Images\parasitized.png");
             var testunparasitizedImageInput = converter.Convert(@"C:\Users\rusta\source\repos\CodeBlogMachineLearning1\CodeBlogMachineLearning1Tests\Images\uninfected.png");
 
-            var topology = new Topology(testparasitizedImageInput.Count, 1, 0.1, testparasitizedImageInput.Count / 2);
+            var topology = new Topology(testparasitizedImageInput.Length, 1, 0.1, testparasitizedImageInput.Length / 2);
             var neuralNetwork = new NeuralNetwork(topology);
             double[,] parasitizedInputs = GetData(parasitizedPath, converter, testparasitizedImageInput,size);
             neuralNetwork.Learn(new double[] { 1 }, parasitizedInputs, 1);
@@ -133,18 +133,18 @@ namespace CodeBlogMachineLearning1.Tests
 
             var par = neuralNetwork.Predict(testparasitizedImageInput.Select(t => (double)t).ToArray());
             var unpar = neuralNetwork.Predict(testunparasitizedImageInput.Select(t => (double)t).ToArray());
-            Assert.AreEqual(1, Math.Round(par.Output, 2));
+             Assert.AreEqual(1, Math.Round(par.Output, 2));
             Assert.AreEqual(0, Math.Round(unpar.Output, 2));
         }
 
-        private static double[,] GetData(string parasitizedPath, PictureConverter converter, List<int> testImageInput,int size)
+        private static double[,] GetData(string parasitizedPath, PictureConverter converter, double[] testImageInput,int size)
         {
             var images = Directory.GetFiles(parasitizedPath);
-            var result = new double[size,testImageInput.Count];
+            var result = new double[size,testImageInput.Length];
             for (int i = 0; i < size; i++)
             {
                 var image = converter.Convert(images[i]);
-                for (int j = 0; j < image.Count; j++)
+                for (int j = 0; j < image.Length; j++)
                 {
                     result[i,j] = image[j];
                 }
